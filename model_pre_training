@@ -1,0 +1,7 @@
+import torch
+import torch.nn as nn
+from torch.nn import functional as F
+# dataset download -> https://github.com/karpathy/char-rnn/blob/master/data/tinyshakespeare/input.txt
+
+with open("F:\Ai datasets\smalltext.txt", 'r', encoding='utf-8') as f:
+    text = f.read()
