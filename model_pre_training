@@ -5,3 +5,29 @@ from torch.nn import functional as F
 
 with open("F:\Ai datasets\smalltext.txt", 'r', encoding='utf-8') as f:
     text = f.read()
+print(len(text))
+
+chars = sorted(list(set(text)))
+vocab_size = len(chars)
+print(''.join(chars))
+print(vocab_size)
+
+stoi = { ch:i for i,ch in enumerate(chars) }
+itos = { i:ch for i,ch in enumerate(chars) }
+encode = lambda s: [stoi[c] for c in s] # encoder: take a string, output a list of integers
+decode = lambda l: ''.join([itos[i] for i in l]) # decoder: take a list of integers, output a string
+
+print(encode('test 445, test 876'))
+print(decode(encode('test 445, test 876')))
+
+data = torch.tensor(encode(text), dtype = torch.long)
+print(data.shape, data.dtype)
+print(data[:100])
+
+n = int(0.9*len(data))
+train_data = data[:n]
+val_data = data[n:]
+
+print('train data size 90% - ',train_data.shape)
+print('test data size 10% - ',val_data.shape)
+print('total data -', data.shape)
