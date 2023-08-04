@@ -2,7 +2,9 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 # dataset download -> https://github.com/karpathy/char-rnn/blob/master/data/tinyshakespeare/input.txt
+##OPTIONAL BIG - model_path = './saved/v2/shakespeareGPT/shakespeareGPT.pth'
 
+tokenizer = Tokenizer.from_file('./tokenizer/shakespeare.json')
 with open("F:\Ai datasets\smalltext.txt", 'r', encoding='utf-8') as f:
     text = f.read()
 print(len(text))
